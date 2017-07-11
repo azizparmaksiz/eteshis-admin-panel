@@ -17,11 +17,16 @@
       "test": "test.ts",
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
-      "prefix": "app",
+      "prefix": "",
       "styles": [
-        "styles.css"
+        "./scss/style.scss"
       ],
-      "scripts": [],
+      "scripts": [
+        "./assets/js/jquery/jquery.js",
+        "./assets/js/tether/tether.js",
+        "./assets/js/bootstrap/bootstrap.js"
+
+        ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
@@ -51,7 +56,7 @@
     }
   },
   "defaults": {
-    "styleExt": "css",
+    "styleExt": "scss",
     "component": {}
   }
 }
