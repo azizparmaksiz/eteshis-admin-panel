@@ -1,11 +1,14 @@
-<input type="button" class="btn btn-info" (click)="addDisease()" value="Add Disease...">
-
+<button pButton type="button" class="ui-button-info" (click)="addDisease()" label="Add Disease..."></button>
+<p></p>
 <div class="ui-dropdown">
-  <input class="form-control" #searchBox id="search-box" (keyup)="search(searchBox.value)" placeholder="Search Disease"/>
+  <input pInputText class="ui-inputtext" #searchBox id="search-box" (keyup)="search(searchBox.value)"
+         placeholder="Search Disease"/>
   <ul class="ui-dropdown-items">
     <li *ngFor="let disease of diseaseArray | async" (click)="openDisease(disease.id)" class="ui-dropdown-item">
       {{disease.name}}
     </li>
-
   </ul>
 </div>
+
+  <disease-detail></disease-detail>
+

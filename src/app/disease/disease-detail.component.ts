@@ -1,48 +1,48 @@
 /**
  * Created by seva on 7/10/17.
  */
-import {Component, Input, OnInit} from '@angular/core';
-import {Disease} from './disease';
+import {Component} from '@angular/core';
+import {Disease} from '../dto/disease';
 import {DiseaseService} from './disease.service';
 import 'rxjs/add/operator/switchMap';
-import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {DiseaseDetailEnum} from './disease-detail.enum';
 
 @Component({
   selector: 'disease-detail',
   templateUrl: './disease-detail.component.html',
+  styleUrls: ['./disease-detail.component.css']
 })
 
 
-export class DiseaseDetailComponent implements OnInit {
-  @Input() diseaseId: number;
-  @Input() diseaseDetailMode= DiseaseDetailEnum.editMode;
+export class DiseaseDetailComponent {
+  displayDialog = false;
+  diseaseDetailMode = DiseaseDetailEnum.editMode;
   disease: Disease;
 
-  constructor(private diseaseService: DiseaseService,
-              public activeModal: NgbActiveModal) {
-
+  constructor(private diseaseService: DiseaseService) {
+    this.disease = new Disease();
   }
 
-  initializeDisease(): void {
-    this.diseaseService.getDisease(this.diseaseId).then(disease => this.disease = disease);
-  }
-
-  ngOnInit() {
-    if (this.diseaseDetailMode === DiseaseDetailEnum.createMode) {
+  initializeDisease(id: number, initializeMode: DiseaseDetailEnum): void {
+    this.diseaseDetailMode = initializeMode;
+    if (initializeMode === DiseaseDetailEnum.createMode) {
       this.disease = new Disease();
     } else {
-      this.initializeDisease();
+      this.diseaseService.getDisease(id).then(disease => this.disease = disease);
     }
-
+    this.displayDialog = true;
   }
 
   save(): void {
-    if (this.diseaseDetailMode === DiseaseDetailEnum.createMode) {
-      this.diseaseService.createDisease(this.disease);
-    } else {
-      this.diseaseService.updateDisease(this.disease);
-    }
+    this.diseaseService.updateDisease(this.disease);
+  }
+
+  update(): void {
+    this.diseaseService.createDisease(this.disease);
+  }
+
+  close(): void {
+    this.displayDialog = false;
   }
 }
 

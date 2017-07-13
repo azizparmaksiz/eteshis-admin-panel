@@ -19,13 +19,14 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "",
       "styles": [
-        "./scss/style.scss"
+
+        "styles.css"
       ],
       "scripts": [
         "./assets/js/jquery/jquery.js",
         "./assets/js/tether/tether.js",
-        "./assets/js/bootstrap/bootstrap.js"
-
+        "./assets/js/bootstrap/bootstrap.js",
+        "../node_modules/quill/dist/quill.js"
         ],
       "environmentSource": "environments/environment.ts",
       "environments": {
@@ -56,7 +57,7 @@
     }
   },
   "defaults": {
-    "styleExt": "scss",
+    "styleExt": "css",
     "component": {}
   }
 }

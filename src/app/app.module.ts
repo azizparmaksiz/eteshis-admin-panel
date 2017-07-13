@@ -2,7 +2,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {DiseaseComponent} from './disease/disease.component';
 import {FormsModule} from '@angular/forms';
 import {RouterModule, Routes} from '@angular/router';
@@ -15,7 +14,17 @@ import {AppMissingTranslationHandler} from './app-missing-translation-handler';
 import {HomeComponent} from './home/home.component';
 import {LoginModule} from './login/login.module';
 import {AuthGuard} from './auth/auth-guard.service';
-import {AuthService} from './auth/auth.service';
+import {
+  AccordionModule,
+  ButtonModule,
+  CodeHighlighterModule,
+  DialogModule,
+  EditorModule,
+  TabViewModule
+} from 'primeng/primeng';
+import {CommonModule} from '@angular/common';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MedicaneComponent} from './medicane/medicane.component';
 
 const routes: Routes = [
 
@@ -36,10 +45,12 @@ export function createTranslateLoader(http: Http) {
     DiseaseComponent,
     SymptomComponent,
     DiseaseDetailComponent,
-    HomeComponent
+    HomeComponent,
+    MedicaneComponent
   ],
   imports: [
-    BrowserModule, FormsModule, NgbModule.forRoot(),
+    BrowserModule, FormsModule, CommonModule, ButtonModule, EditorModule, AccordionModule,
+    DialogModule, TabViewModule, CodeHighlighterModule, BrowserAnimationsModule,
     RouterModule.forRoot(routes), HttpModule, LoginModule,
     TranslateModule.forRoot({
       provide: TranslateLoader,
@@ -47,7 +58,6 @@ export function createTranslateLoader(http: Http) {
       deps: [Http],
     }),
   ],
-  entryComponents: [DiseaseDetailComponent],
   providers: [DiseaseService, AuthGuard,
     {provide: MissingTranslationHandler, useClass: AppMissingTranslationHandler}],
   bootstrap: [AppComponent]

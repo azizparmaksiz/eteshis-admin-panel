@@ -1,41 +1,128 @@
-<div class="modal-content modal-lg" >
-<div  class="modal-header bg-info"  >
-  <h4 class="modal-title">Disease Detail</h4>
-  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-<div class="modal-body">
-  <div class="table-responsive">
-    <table class="table table-striped table-bordered text-left">
-      <thead>
-      <tr>
-        <th></th>
-        <th>{{'diseaseName' | translate}}</th>
-        <th>Latin Name</th>
-        <th>{{'diseaseCat' | translate}}</th>
-        <th>Ratio</th>
-        <th>{{'diseaseStatus' | translate}}</th>
+<p-dialog  modal="modal" [responsive]="false" [(visible)]="displayDialog" >
+  <p-header><h3 class="text-white">Disease Detail</h3></p-header>
 
-      </tr>
-      </thead>
-      <tbody >
+  <div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-6">
+        <span>{{'l_disease.categories' | translate}}</span>
+        <input type="text" class="form-control" [(ngModel)]="disease.categories">
+      </div>
+      <div class="ui-grid-col-6">
+        <span>{{'l_disease.ageRanges' | translate}}</span>
+        <input type="text" class="form-control" [(ngModel)]="disease.ageRanges">
+      </div>
+    </div>
+    <br>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-6">
+        <span>{{'l_disease.name' | translate}}</span>
+        <input type="text" class="form-control" [(ngModel)]="disease.name">
+      </div>
+      <div class="ui-grid-col-6">
+        <span>{{'l_disease.code' | translate}}</span>
+        <input type="text" class="form-control" [(ngModel)]="disease.code" >
+      </div>
+    </div>
+    <br>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-12">
+        <p-accordion [multiple]="true">
 
-      <tr *ngIf="disease && disease.name">
-        <td><span class="fa fa-pencil"></span></td>
-        <td>{{disease?.name}}</td>
-        <td>{{disease?.description}}</td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      </tbody>
-    </table>
+          <p-accordionTab >
+            <p-header> {{'l_disease.description' | translate}}</p-header>
+            <p-editor [(ngModel)]="disease.description" ></p-editor>
+          </p-accordionTab>
+
+          <p-accordionTab >
+            <p-header> {{'l_disease.treatment' | translate}}</p-header>
+            <p-editor [(ngModel)]="disease.treatment "></p-editor>
+          </p-accordionTab>
+
+          <p-accordionTab >
+            <p-header> {{'l_disease.riskFactor' | translate}}</p-header>
+            <p-editor [(ngModel)]="disease.riskFactor " ></p-editor>
+          </p-accordionTab>
+
+          <p-accordionTab >
+            <p-header> {{'l_disease.selfCare' | translate}}</p-header>
+            <p-editor [(ngModel)]="disease.selfCare " ></p-editor>
+          </p-accordionTab>
+
+          <p-accordionTab >
+            <p-header> {{'l_disease.diagnosedBy' | translate}}</p-header>
+
+            <p-editor [(ngModel)]="disease.diagnosedBy " ></p-editor>
+          </p-accordionTab>
+
+          <p-accordionTab >
+            <p-header> {{'l_disease.whatToExpect' | translate}}</p-header>
+            <p-editor [(ngModel)]="disease.whatToExpect " ></p-editor>
+          </p-accordionTab>
+
+          <p-accordionTab >
+            <p-header> {{'l_disease.howCommon' | translate}}</p-header>
+            <p-editor [(ngModel)]="disease.howCommon " ></p-editor>
+          </p-accordionTab>
+
+          <p-accordionTab >
+            <p-header> {{'l_disease.ref' | translate}}</p-header>
+            <p-editor [(ngModel)]="disease.ref " ></p-editor>
+          </p-accordionTab>
+        </p-accordion>
+
+      </div>
+    </div>
+    <br>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-6">
+        <span>{{'l_disease.url' | translate}}</span>
+        <input type="text" class="form-control" [(ngModel)]="disease.url">
+      </div>
+      <div class="ui-grid-col-6">
+        <span>{{'l_disease.probability' | translate}}</span>
+        <input type="text" class="form-control" [(ngModel)]="disease.probability" >
+      </div>
+    </div>
+    <br>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-12">
+        <span>{{'l_disease.medicalTests' | translate}}</span>
+        <input type="text" class="form-control" [(ngModel)]="disease.medicalTests" >
+      </div>
+    </div>
+    <br>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-6">
+        <span>{{'l_disease.gender' | translate}}</span>
+        <input type="text" class="form-control" [(ngModel)]="disease.gender">
+      </div>
+      <div class="ui-grid-col-6">
+        <span>{{'l_disease.langCode' | translate}}</span>
+        <input type="text" class="form-control" [(ngModel)]="disease.langCode" >
+      </div>
+    </div>
+    <br>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4">
+        <span>{{'l_disease.usedRisk' | translate}}</span>
+        <input type="text" class="form-control" [(ngModel)]="disease.usedRisk">
+      </div>
+      <div class="ui-grid-col-4">
+        <span>{{'l_disease.approved' | translate}}</span>
+        <input type="text" class="form-control" [(ngModel)]="disease.approved" >
+      </div>
+      <div class="ui-grid-col-4">
+        <span>{{'l_disease.enabled' | translate}}</span>
+        <input type="text" class="form-control" [(ngModel)]="disease.enabled" >
+      </div>
+    </div>
+    <br>
   </div>
-</div>
-<div class="modal-footer">
-  <button *ngIf="diseaseDetailMode" type="button" class="btn btn-info" (click)="save()" >Save</button>
-  <button *ngIf="!diseaseDetailMode"  type="button" class="btn btn-info" (click)="update()" >Update</button>
-  <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Close</button>
-</div>
-</div>
+  <p-footer>
+    <button pButton type="button" class="ui-button-secondary" (click)="close()" label="close"></button>
+    <button *ngIf="diseaseDetailMode" pButton type="button" class="ui-button-success" (click)="save()"
+            label="Save"></button>
+    <button *ngIf="!diseaseDetailMode" pButton type="button" class="ui-button-success" (click)="update()"
+            label="Update"></button>
+  </p-footer>
+</p-dialog>

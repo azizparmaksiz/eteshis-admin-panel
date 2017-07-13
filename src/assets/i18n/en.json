@@ -1,5 +1,25 @@
 {
-  "diseaseName": "Disease Name",
-  "diseaseCat": "Disease Category",
-  "diseaseStatus": "Disease Status "
+  "l_disease": {
+    "categories": "Categories",
+    "ageRanges": "Age Ranges",
+    "name": " Disease Name",
+    "medicoName": "Medico Name",
+    "code": "Disease Code",
+    "description": "Description",
+    "treatment": "Treatment",
+    "riskFactor": "Risk Factor",
+    "selfCare": "SelfCare",
+    "diagnosedBy": "Diagnosed By",
+    "whatToExpect": "What To Expect",
+    "howCommon": "How Common",
+    "ref": "Ref Name",
+    "url": "Url",
+    "probability": "Probability",
+    "medicalTests": "Medical Tests",
+    "gender": "Gender",
+    "langCode": "Language Code",
+    "usedRisk": "Used Risk",
+    "approved": "Approved",
+    "enabled": "Enabled"
+  }
 }

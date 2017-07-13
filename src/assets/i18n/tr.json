@@ -1,5 +1,25 @@
 {
-  "diseaseName":"Hastalık Adı",
-  "diseaseCat":"Hastalık Kategorisi",
-  "diseaseStatus":"Hastalık Durumu"
+  "l_disease": {
+    "name": " Hastalık Adı",
+    "code": "Kodu",
+    "url": "Url",
+    "ref": "Referans İsmi",
+    "approved": "Doğrulanmış",
+    "enabled": "Enabled",
+    "probability": "Olasılığı",
+    "gender": "Cinsiyet",
+    "medicoName": "İlaç İsmi",
+    "description": "Açıklaması",
+    "treatment": "Tedavisi",
+    "riskFactor": "Risk Faktörü",
+    "selfCare": "SelfCare",
+    "diagnosedBy": "Saptanma Şekli",
+    "whatToExpect": "Ne Beklenir",
+    "howCommon": "Sıklığı",
+    "usedRisk": "Kullanma Riski",
+    "langCode": "Dil Kodu",
+    "categories": "Kategori",
+    "medicalTests": "Medical Testler",
+    "ageRanges": "Yaş Aralığı"
+  }
 }

@@ -7,7 +7,7 @@ import {Headers, Http} from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
-import {Disease} from './disease';
+import {Disease} from '../dto/disease';
 import {Observable} from 'rxjs/Observable';
 @Injectable()
 export class DiseaseService {

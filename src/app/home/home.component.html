@@ -1,13 +1,56 @@
-<div role="navigation">
-  <div >
+<!--header start-->
+<header class="navbar container-fluid">
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" routerLink="/home" routerLinkActive="active" >@-HOSPITAL</a>
 
-    <div >
-      <ul >
-        <li> <a routerLink="/home" routerLinkActive="active">e teshis</a></li>
-        <li><a routerLink="/home/diseases" routerLinkActive="active">Disease</a></li>
-        <li><a routerLink="/home/symptoms" routerLinkActive="active">Symptom</a></li>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/syptom" routerLinkActive="active">Symptom</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home/diseases" routerLinkActive="active">Disease</a>
+        </li>
+        <li class="nav-item my-2 my-lg-0" >
+          <a class="nav-link" href="#" (click)="logOut()">LogOut</a>
+        </li>
       </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
     </div>
-  </div>
+  </nav>
+</header>
+<!--header end-->
+<div>
+<!--sidebar start-->
+  <div >
+    <nav>
+      <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/home/diseases" routerLinkActive="active">Disease</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/home/syptom" routerLinkActive="active">Syptom</a>
+      </li>
+    </ul>
+  </nav>
 </div>
-<router-outlet></router-outlet>
+<!--side bar end-->
+
+<!-- Main content -->
+<main>
+  <div class="container-fluid">
+    <router-outlet></router-outlet>
+  </div>
+  <!-- /.conainer-fluid -->
+</main>
+</div>
+
+<footer >
+
+</footer>

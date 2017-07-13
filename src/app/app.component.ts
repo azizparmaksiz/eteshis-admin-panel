@@ -9,7 +9,7 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  title = 'app';
+
   private subscription: Subscription;
 
   constructor(private translate: TranslateService, private activatedRoute: ActivatedRoute) {
@@ -17,7 +17,7 @@ export class AppComponent implements OnInit, OnDestroy {
     translate.setDefaultLang('en');
 
     const browserLang = translate.getBrowserLang();
-    translate.use(browserLang.match(/en|tr/) ? browserLang : 'tr');
+    translate.use(browserLang.match(/en|tr/) ? browserLang : 'en');
   }
 
   changeLanguage(lang) {

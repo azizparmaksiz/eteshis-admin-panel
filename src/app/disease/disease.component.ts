@@ -1,8 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {Disease} from './disease';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {Disease} from '../dto/disease';
 import {DiseaseService} from './disease.service';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {DiseaseDetailComponent} from './disease-detail.component';
 import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
 // Observable class extensions
@@ -12,11 +10,15 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import {DiseaseDetailEnum} from './disease-detail.enum';
+import {DiseaseDetailComponent} from './disease-detail.component';
 @Component({
   selector: 'app-disease',
   templateUrl: './disease.component.html',
+
 })
 export class DiseaseComponent implements OnInit {
+  @ViewChild(DiseaseDetailComponent) diseaseDetailComp: DiseaseDetailComponent;
+
 
   diseaseArray: Observable<Disease[]>;
   private searchTerms = new Subject<string>();
@@ -27,8 +29,7 @@ export class DiseaseComponent implements OnInit {
   }
 
 
-  constructor(private diseaseService: DiseaseService,
-              private modelService: NgbModal) {
+  constructor(private diseaseService: DiseaseService) {
   }
 
 
@@ -49,14 +50,11 @@ export class DiseaseComponent implements OnInit {
   }
 
   openDisease(diseaseId: number): void {
-    const modalRef = this.modelService.open(DiseaseDetailComponent);
-
-    modalRef.componentInstance.diseaseId = diseaseId;
+    this.diseaseDetailComp.initializeDisease(diseaseId, DiseaseDetailEnum.editMode);
   }
 
   addDisease(): void {
-    const modalRef = this.modelService.open(DiseaseDetailComponent);
+    this.diseaseDetailComp.initializeDisease(-1, DiseaseDetailEnum.createMode);
 
-    modalRef.componentInstance.diseaseDetailMode = DiseaseDetailEnum.createMode;
   }
 }
