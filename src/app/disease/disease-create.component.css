@@ -1,6 +1,6 @@
 
 :host /deep/ .ui-widget-header {
-  background: #67c2ef 0 0 repeat-x;
+  background: #69c1ef 0 0 repeat-x;
 }
 
 :host /deep/ .ui-editor-container {
@@ -9,11 +9,18 @@
 
 :host /deep/ p-dialog .ui-dialog {
   overflow: scroll;
-  max-height: 80%;
+  max-height: 90%;
   max-width: 70%;
 }
 
 :host /deep/ p-editor .ui-editor-content {
   overflow: scroll;
-  max-height: 60%;
+  max-height: 90%;
+  margin-left: 2px;
 }
+
+:host /deep/ p-multiSelect .ui-multiselect-panel{
+  min-width:100%; ;
+}
+
+

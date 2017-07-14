@@ -6,9 +6,9 @@ import {DiseaseComponent} from './disease/disease.component';
 import {FormsModule} from '@angular/forms';
 import {RouterModule, Routes} from '@angular/router';
 import {Http, HttpModule} from '@angular/http';
-import {DiseaseService} from './disease/disease.service';
+import {DiseaseService} from './service/disease.service';
 import {SymptomComponent} from './symptom/symptom.component';
-import {DiseaseDetailComponent} from './disease/disease-detail.component';
+import {DiseaseCreateComponent} from './disease/disease-create.component';
 import {MissingTranslationHandler, TranslateLoader, TranslateModule, TranslateStaticLoader} from 'ng2-translate';
 import {AppMissingTranslationHandler} from './app-missing-translation-handler';
 import {HomeComponent} from './home/home.component';
@@ -17,14 +17,21 @@ import {AuthGuard} from './auth/auth-guard.service';
 import {
   AccordionModule,
   ButtonModule,
+  CheckboxModule,
   CodeHighlighterModule,
   DialogModule,
+  DropdownModule,
   EditorModule,
+  MultiSelectModule,
+  SpinnerModule,
   TabViewModule
 } from 'primeng/primeng';
 import {CommonModule} from '@angular/common';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MedicaneComponent} from './medicane/medicane.component';
+import {CategoryService} from './service/category.service';
+import {AgeRangeService} from './service/age-range.service';
+import {MedicalTestService} from './service/medicalTest.service';
 
 const routes: Routes = [
 
@@ -44,21 +51,21 @@ export function createTranslateLoader(http: Http) {
     AppComponent,
     DiseaseComponent,
     SymptomComponent,
-    DiseaseDetailComponent,
+    DiseaseCreateComponent,
     HomeComponent,
     MedicaneComponent
   ],
   imports: [
     BrowserModule, FormsModule, CommonModule, ButtonModule, EditorModule, AccordionModule,
-    DialogModule, TabViewModule, CodeHighlighterModule, BrowserAnimationsModule,
-    RouterModule.forRoot(routes), HttpModule, LoginModule,
+    DialogModule, TabViewModule, CodeHighlighterModule, BrowserAnimationsModule, DropdownModule, MultiSelectModule,
+    RouterModule.forRoot(routes), HttpModule, LoginModule, CheckboxModule, SpinnerModule,
     TranslateModule.forRoot({
       provide: TranslateLoader,
       useFactory: (createTranslateLoader),
       deps: [Http],
     }),
   ],
-  providers: [DiseaseService, AuthGuard,
+  providers: [DiseaseService, AuthGuard, CategoryService, AgeRangeService, MedicalTestService,
     {provide: MissingTranslationHandler, useClass: AppMissingTranslationHandler}],
   bootstrap: [AppComponent]
 })

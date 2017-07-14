@@ -3,18 +3,19 @@
  */
 import {Injectable} from '@angular/core';
 
-import {Headers, Http} from '@angular/http';
+import { Http} from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import {Disease} from '../dto/disease';
 import {Observable} from 'rxjs/Observable';
+import {HEADERS_CONST, SERVER_URL} from '../config/app-constants';
 @Injectable()
 export class DiseaseService {
   // private tasksUrl = 'api/tasks';  // URL to web enable it when you will use in memory web api
-  private headers = new Headers({'Content-Type': 'application/json'});
-  private diseasesUrl = 'http://localhost:3000/diseases';  // URL to web
+  private diseasesUrl: string;  // URL to web
   constructor(private http: Http) {
+    this.diseasesUrl = SERVER_URL + '/diseases';
   }
 
 
@@ -33,7 +34,7 @@ export class DiseaseService {
 
   deleteTask(id: number): Promise<void> {
     const url = `${this.diseasesUrl}/${id}`;
-    return this.http.delete(url, {headers: this.headers})
+    return this.http.delete(url, {headers: HEADERS_CONST})
       .toPromise()
       .then(() => null)
       .catch(this.handleError);
@@ -46,7 +47,7 @@ export class DiseaseService {
 
   createDisease(task: Disease): Promise<Disease> {
     return this.http
-      .post(this.diseasesUrl, JSON.stringify(task), {headers: this.headers})
+      .post(this.diseasesUrl, JSON.stringify(task), {headers: HEADERS_CONST})
       .toPromise()
       .then(() => task)
       .catch(this.handleError);
@@ -55,7 +56,7 @@ export class DiseaseService {
   updateDisease(task: Disease): Promise<Disease> {
     const url = `${this.diseasesUrl}/${task.id}`;
     return this.http
-      .put(url, JSON.stringify(task), {headers: this.headers})
+      .put(url, JSON.stringify(task), {headers: HEADERS_CONST})
       .toPromise()
       .then(() => task)
       .catch(this.handleError);
@@ -66,4 +67,6 @@ export class DiseaseService {
       .get(this.diseasesUrl + `/?name=${term}`)
       .map(response => response.json());
   }
+
+
 }

@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Disease} from '../dto/disease';
-import {DiseaseService} from './disease.service';
+import {DiseaseService} from '../service/disease.service';
 import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
 // Observable class extensions
@@ -9,15 +9,15 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
-import {DiseaseDetailEnum} from './disease-detail.enum';
-import {DiseaseDetailComponent} from './disease-detail.component';
+import {DiseaseEnum} from './disease.enum';
+import {DiseaseCreateComponent} from './disease-create.component';
 @Component({
   selector: 'app-disease',
   templateUrl: './disease.component.html',
 
 })
 export class DiseaseComponent implements OnInit {
-  @ViewChild(DiseaseDetailComponent) diseaseDetailComp: DiseaseDetailComponent;
+  @ViewChild(DiseaseCreateComponent) diseaseDetailComp: DiseaseCreateComponent;
 
 
   diseaseArray: Observable<Disease[]>;
@@ -50,11 +50,11 @@ export class DiseaseComponent implements OnInit {
   }
 
   openDisease(diseaseId: number): void {
-    this.diseaseDetailComp.initializeDisease(diseaseId, DiseaseDetailEnum.editMode);
+    this.diseaseDetailComp.initializeDisease(diseaseId, DiseaseEnum.editMode);
   }
 
   addDisease(): void {
-    this.diseaseDetailComp.initializeDisease(-1, DiseaseDetailEnum.createMode);
+    this.diseaseDetailComp.initializeDisease(-1, DiseaseEnum.createMode);
 
   }
 }

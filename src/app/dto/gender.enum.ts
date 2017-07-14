@@ -5,5 +5,4 @@ export enum GenderEnum{
   MALE = 1,
   FEMALE = 2,
   ALL = 3,
-  OTHERS = 4
-}
+  }
