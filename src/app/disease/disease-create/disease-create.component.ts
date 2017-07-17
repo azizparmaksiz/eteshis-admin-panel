@@ -2,16 +2,16 @@
  * Created by seva on 7/10/17.
  */
 import {Component} from '@angular/core';
-import {Disease} from '../dto/disease';
-import {DiseaseService} from '../service/disease.service';
+import {DiseaseCreate} from '../../dto/disease-create';
+import {DiseaseService} from '../../service/disease.service';
 import 'rxjs/add/operator/switchMap';
-import {DiseaseEnum} from './disease.enum';
-import {EnumEx} from '../util/EnumEx';
-import {GenderEnum} from '../dto/gender.enum';
-import {LangCodeEnum} from '../dto/language-code.enum';
-import {CategoryService} from '../service/category.service';
-import {AgeRangeService} from '../service/age-range.service';
-import {MedicalTestService} from '../service/medicalTest.service';
+import {DiseaseEnum} from '../disease.enum';
+import {EnumEx} from '../../util/EnumEx';
+import {GenderEnum} from '../../dto/gender.enum';
+import {LangCodeEnum} from '../../dto/language-code.enum';
+import {CategoryService} from '../../service/category.service';
+import {AgeRangeService} from '../../service/age-range.service';
+import {MedicalTestService} from '../../service/medicalTest.service';
 
 @Component({
   selector: 'disease-detail',
@@ -23,7 +23,7 @@ import {MedicalTestService} from '../service/medicalTest.service';
 export class DiseaseCreateComponent {
   displayDialog = false;
   diseaseDetailMode = DiseaseEnum.editMode;
-  disease: Disease;
+  disease: DiseaseCreate;
 
   categories: Array<any>;
   medicalTests: Array<any>;
@@ -35,7 +35,7 @@ export class DiseaseCreateComponent {
 
   constructor(private diseaseService: DiseaseService, private categoryService: CategoryService,
               private ageRangeService: AgeRangeService, private medicalTesService: MedicalTestService) {
-    this.disease = new Disease();
+    this.disease = new DiseaseCreate();
     this.genders = this.getDropDownArrayFromEnum(GenderEnum);
     this.langCodes = this.getDropDownArrayFromEnum(LangCodeEnum);
     this.categories = this.getCategories();
@@ -95,19 +95,19 @@ export class DiseaseCreateComponent {
   initializeDisease(id: number, initializeMode: DiseaseEnum): void {
     this.diseaseDetailMode = initializeMode;
     if (initializeMode === DiseaseEnum.createMode) {
-      this.disease = new Disease();
+      this.disease = new DiseaseCreate();
     } else {
-      this.diseaseService.getDisease(id).then(disease => this.disease = disease);
+      // this.diseaseService.getDisease(id).then(disease => this.disease = disease);
     }
     this.displayDialog = true;
   }
 
   save(): void {
-    this.diseaseService.updateDisease(this.disease);
+    this.diseaseService.createDisease(this.disease);
   }
 
   update(): void {
-    this.diseaseService.createDisease(this.disease);
+    // this.diseaseService.createDisease(this.disease);
   }
 
   close(): void {

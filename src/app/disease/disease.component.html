@@ -1,13 +1,58 @@
+
+
+<div >
+<p-dataTable [value]="diseaseArray" [rows]="10" [paginator]="true">
+
+  <p-column >
+    <ng-template pTemplate="header">
+      <span>{{'l_disease.name' | translate}}</span>
+    </ng-template>
+    <ng-template let-disease="rowData" pTemplate="body">
+      <span>{{disease.diseaseName}}</span>
+    </ng-template>
+  </p-column>
+
+  <p-column>
+    <ng-template pTemplate="header">
+      <span>{{'l_disease.categories' | translate}}</span>
+    </ng-template>
+    <ng-template let-disease="rowData" pTemplate="body">
+    <span *ngFor="let category of disease.categoryList">{{category.categoryName}}, </span>
+    </ng-template>
+  </p-column>
+
+  <p-column [style]="{'width':'130px'}">
+
+    <ng-template  pTemplate="body">
+      <span class="col-md-3 fa fa-edit" style="color:#5cb85c"> </span>
+      <span class="col-md-3 fa fa-eye" style="color:#5cb85c"> </span>
+      <span class="col-md-3 fa fa-trash" style="color:#5cb85c"> </span>
+    </ng-template>
+  </p-column>
+
+
+  <p-column *ngFor="let lang of langCodeEnumList" [style]="{'width':'50px'}" >
+
+    <ng-template  pTemplate="header">
+      <span> <img src="assets/img/flags/{{lang.name}}.png"  width="24"></span>
+    </ng-template>
+    <ng-template  pTemplate="body">
+      <a href="#">
+        <span class="fa fa-pencil" style="color:#5cb85c"></span>
+      </a>
+
+    </ng-template>
+  </p-column>
+
+</p-dataTable>
+</div>
+
 <button pButton type="button" class="ui-button-info" (click)="addDisease()" label="Add Disease..."></button>
 <p></p>
 <div class="ui-dropdown">
   <input pInputText class="ui-inputtext" #searchBox id="search-box" (keyup)="search(searchBox.value)"
          placeholder="Search Disease"/>
-  <ul class="ui-dropdown-items">
-    <li *ngFor="let disease of diseaseArray | async" (click)="openDisease(disease.id)" class="ui-dropdown-item">
-      {{disease.name}}
-    </li>
-  </ul>
+
 </div>
 
   <disease-detail></disease-detail>

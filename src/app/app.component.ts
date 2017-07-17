@@ -13,11 +13,11 @@ export class AppComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
 
   constructor(private translate: TranslateService, private activatedRoute: ActivatedRoute) {
-    translate.addLangs(['en', 'tr']);
+    translate.addLangs(['en', 'tr', 'fr', 'ar', 'ru']);
     translate.setDefaultLang('en');
 
     const browserLang = translate.getBrowserLang();
-    translate.use(browserLang.match(/en|tr/) ? browserLang : 'en');
+    translate.use(browserLang.match(/en|tr|fr|ar|ru/) ? browserLang : 'en');
   }
 
   changeLanguage(lang) {

@@ -9,17 +9,18 @@
     "probability": "Olasılığı",
     "gender": "Cinsiyet",
     "medicoName": "İlaç İsmi",
-    "description": "Açıklaması",
-    "treatment": "Tedavisi",
-    "riskFactor": "Risk Faktörü",
-    "selfCare": "SelfCare",
-    "diagnosedBy": "Saptanma Şekli",
-    "whatToExpect": "Ne Beklenir",
-    "howCommon": "Sıklığı",
-    "usedRisk": "Kullanma Riski",
+    "description": "Detay Bilgi",
+    "treatment": "Tedavi Yöntemi",
+    "riskFactor": "Risk Faktör",
+    "selfCare": "Kendi Kendine Bakim",
+    "diagnosedBy": "Sebebi",
+    "whatToExpect": "Olabilecek İhtimaller",
+    "howCommon": "Genel Geçer Bilgiler",
+    "usedRisk": "Risk Alanı",
     "langCode": "Dil Kodu",
     "categories": "Kategori",
     "medicalTests": "Medical Testler",
     "ageRanges": "Yaş Aralığı"
-  }
+  },
+  "t_createDisease": "Hastalık Oluştur"
 }

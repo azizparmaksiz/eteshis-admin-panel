@@ -4,8 +4,7 @@ import {LangCodeEnum} from './language-code.enum';
  * Created by seva on 7/9/17.
  */
 
-export class Disease {
-  id: number;
+export class DiseaseCreate {
   probability: number;
   code: string;
   url: string;
@@ -28,5 +27,4 @@ export class Disease {
   categoryIdList: Array<number>;
   medicalTestIdList: Array<number>;
   ageRangeIdList: Array<number>;
-
 }

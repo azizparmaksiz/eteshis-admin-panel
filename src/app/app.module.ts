@@ -8,7 +8,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {Http, HttpModule} from '@angular/http';
 import {DiseaseService} from './service/disease.service';
 import {SymptomComponent} from './symptom/symptom.component';
-import {DiseaseCreateComponent} from './disease/disease-create.component';
+import {DiseaseCreateComponent} from './disease/disease-create/disease-create.component';
 import {MissingTranslationHandler, TranslateLoader, TranslateModule, TranslateStaticLoader} from 'ng2-translate';
 import {AppMissingTranslationHandler} from './app-missing-translation-handler';
 import {HomeComponent} from './home/home.component';
@@ -18,11 +18,11 @@ import {
   AccordionModule,
   ButtonModule,
   CheckboxModule,
-  CodeHighlighterModule,
+  CodeHighlighterModule, DataTableModule,
   DialogModule,
   DropdownModule,
   EditorModule,
-  MultiSelectModule,
+  MultiSelectModule, SharedModule,
   SpinnerModule,
   TabViewModule
 } from 'primeng/primeng';
@@ -57,7 +57,8 @@ export function createTranslateLoader(http: Http) {
   ],
   imports: [
     BrowserModule, FormsModule, CommonModule, ButtonModule, EditorModule, AccordionModule,
-    DialogModule, TabViewModule, CodeHighlighterModule, BrowserAnimationsModule, DropdownModule, MultiSelectModule,
+    DialogModule, TabViewModule, CodeHighlighterModule, BrowserAnimationsModule, DropdownModule,
+    MultiSelectModule, DataTableModule, SharedModule,
     RouterModule.forRoot(routes), HttpModule, LoginModule, CheckboxModule, SpinnerModule,
     TranslateModule.forRoot({
       provide: TranslateLoader,
