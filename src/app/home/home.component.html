@@ -1,10 +1,12 @@
 <!--header start-->
 <header class="navbar container-fluid">
   <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" routerLink="/home" routerLinkActive="active" >@-HOSPITAL</a>
+    <a class="navbar-brand" routerLink="/home" routerLinkActive="active">@-HOSPITAL</a>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
@@ -14,43 +16,49 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/home/diseases" routerLinkActive="active">Disease</a>
         </li>
-        <li class="nav-item my-2 my-lg-0" >
+        <li class="nav-item my-2 my-lg-0">
           <a class="nav-link" href="#" (click)="logOut()">LogOut</a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+      <div class="form-inline my-2 my-sm-0">
+        <p-dropdown [options]="langCodeArray" [(ngModel)]="langCode" autoWidth="false" (onChange)="changeLang()">
+          <ng-template let-lang pTemplate="item">
+            <div class="ui-helper-clearfix">
+              <img src="assets/img/flags/{{lang.label}}.png" width="16">
+              <span style="font-size:13px;float:right; margin-top:2px">{{lang.label}}</span>
+            </div>
+          </ng-template>
+        </p-dropdown>
+      </div>
+
     </div>
   </nav>
 </header>
 <!--header end-->
-<div>
-<!--sidebar start-->
-  <div >
-    <nav>
-      <ul class="nav">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/home/diseases" routerLinkActive="active">Disease</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/home/syptom" routerLinkActive="active">Syptom</a>
-      </li>
-    </ul>
-  </nav>
-</div>
-<!--side bar end-->
 
-<!-- Main content -->
-<main>
-  <div class="container-fluid">
-    <router-outlet></router-outlet>
+<div class=" row container-fluid ">
+  <!--sidebar start-->
+
+    <div class="col-md-2">
+      <div class="row">
+        <a class="col-md-10 ui-button-info" routerLink="/home/diseases" routerLinkActive="active">Disease</a>
+      </div>
+      <div class=" row">
+        <a class="col-md-10 ui-button-info" routerLink="/home/syptom" routerLinkActive="active">Syptom</a>
+      </div>
+    </div>
+
+  <!--side bar end-->
+
+  <!-- Main content -->
+  <div class="col-md-10">
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div>
+    <!-- /.conainer-fluid -->
   </div>
-  <!-- /.conainer-fluid -->
-</main>
 </div>
 
-<footer >
+<footer>
 
 </footer>

@@ -1,14 +1,15 @@
 {
   "l_disease": {
+    "diseaseId": "Hastalik Numarasi",
     "name": " Hastalık Adı",
     "code": "Kodu",
     "url": "Url",
-    "ref": "Referans İsmi",
+    "ref": "Referanslar",
     "approved": "Doğrulanmış",
     "enabled": "Enabled",
     "probability": "Olasılığı",
     "gender": "Cinsiyet",
-    "medicoName": "İlaç İsmi",
+    "medicoName": "Hastalık Adı (Latince) ",
     "description": "Detay Bilgi",
     "treatment": "Tedavi Yöntemi",
     "riskFactor": "Risk Faktör",
@@ -18,9 +19,12 @@
     "howCommon": "Genel Geçer Bilgiler",
     "usedRisk": "Risk Alanı",
     "langCode": "Dil Kodu",
-    "categories": "Kategori",
-    "medicalTests": "Medical Testler",
-    "ageRanges": "Yaş Aralığı"
+    "categories": "Hastalık Kategorisi",
+    "medicalTests": "Gerekli Testler",
+    "ageRanges": "Yaş Aralığı",
+    "symptomList": "Belirtiler"
   },
-  "t_createDisease": "Hastalık Oluştur"
+  "t_createDisease": "Hastalık Oluştur",
+  "t_diseaseDetail": "Hastalık Detayı",
+   "t_editDisease": "Hastalığı Düzenle"
 }

@@ -7,14 +7,14 @@ import {Headers, Http} from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
-import {DiseaseCreate} from '../dto/disease-create';
+import {DiseaseCreateDto} from '../dto/disease-create';
 import {Observable} from 'rxjs/Observable';
 import {SERVER_URL} from '../config/app-constants';
 import {DiseaseList} from '../dto/disease-list';
-import {DiseaseTransCreate} from '../dto/disease-trans-create';
+import {DiseaseTransCreateDto} from '../dto/disease-trans-create';
 import {DiseaseUpdateDto} from '../dto/disease-update';
 import {DiseaseTransId} from '../dto/disease-trans-id';
-import {DiseaseDetail} from '../dto/disease-detail';
+import {DiseaseTransDetail} from '../dto/disease-trans-detail';
 @Injectable()
 export class DiseaseService {
   // private tasksUrl = 'api/tasks';  // URL to web enable it when you will use in memory web api
@@ -53,7 +53,7 @@ export class DiseaseService {
       .catch(this.handleError);
   }
 
-  deleteTransDisease(transDelete: DiseaseTransId): Promise<DiseaseCreate> {
+  deleteTransDisease(transDelete: DiseaseTransId): Promise<DiseaseCreateDto> {
     return this.http
       .post(SERVER_URL + '/disease/transdelete', JSON.stringify(transDelete), {headers: this.headers})
       .toPromise()
@@ -61,7 +61,7 @@ export class DiseaseService {
       .catch(this.handleError);
   }
 
-  getDiseaseDetail(diseaseTransId: DiseaseTransId): Promise<DiseaseDetail> {
+  getDiseaseDetail(diseaseTransId: DiseaseTransId): Promise<DiseaseTransDetail> {
     return this.http
       .post(SERVER_URL + '/disease/detail', JSON.stringify(diseaseTransId), {headers: this.headers})
       .toPromise()
@@ -69,7 +69,7 @@ export class DiseaseService {
       .catch(this.handleError);
   }
 
-  createDisease(task: DiseaseCreate): Promise<DiseaseCreate> {
+  createDisease(task: DiseaseCreateDto): Promise<DiseaseCreateDto> {
     console.log(JSON.stringify(task));
     return this.http
       .post(SERVER_URL + '/disease/create', JSON.stringify(task), {headers: this.headers})
@@ -78,7 +78,7 @@ export class DiseaseService {
       .catch(this.handleError);
   }
 
-  createTransDisease(task: DiseaseTransCreate): Promise<DiseaseTransCreate> {
+  createTransDisease(task: DiseaseTransCreateDto): Promise<DiseaseTransCreateDto> {
     return this.http
       .post(SERVER_URL + '/disease/transcreate', JSON.stringify(task), {headers: this.headers})
       .toPromise()
@@ -95,7 +95,7 @@ export class DiseaseService {
       .catch(this.handleError);
   }
 
-  updateTransDisease(disease: DiseaseTransCreate): Promise<DiseaseTransCreate> {
+  updateTransDisease(disease: DiseaseTransCreateDto): Promise<DiseaseTransCreateDto> {
 
     return this.http
       .put(SERVER_URL + '/disease/transupdate', JSON.stringify(disease), {headers: this.headers})
@@ -105,7 +105,7 @@ export class DiseaseService {
   }
 
 
-  search(term: string): Observable<DiseaseDetail[]> {
+  search(term: string): Observable<DiseaseTransDetail[]> {
     return this.http
       .get(SERVER_URL + '/disease/filter' + `/?name=${term}`)
       .map(response => response.json());

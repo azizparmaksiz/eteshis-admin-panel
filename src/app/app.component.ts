@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {TranslateService} from 'ng2-translate';
 import {Subscription} from 'rxjs/Subscription';
 import {ActivatedRoute} from '@angular/router';
+import {SharedService} from "./service/shared.service";
 
 @Component({
   selector: 'app-root',
@@ -14,10 +15,11 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(private translate: TranslateService, private activatedRoute: ActivatedRoute) {
     translate.addLangs(['en', 'tr', 'fr', 'ar', 'ru']);
-    translate.setDefaultLang('en');
+    translate.setDefaultLang('tr');
 
     const browserLang = translate.getBrowserLang();
-    translate.use(browserLang.match(/en|tr|fr|ar|ru/) ? browserLang : 'en');
+    translate.use(browserLang.match(/en|tr|fr|ar|ru/) ? browserLang : 'tr');
+
   }
 
   changeLanguage(lang) {

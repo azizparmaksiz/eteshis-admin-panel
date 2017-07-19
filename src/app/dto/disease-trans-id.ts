@@ -6,4 +6,9 @@ export class DiseaseTransId {
   diseaseId: number;
   langCode: LangCodeEnum;
 
+  constructor(diseaseId:number,langCodeEnum:LangCodeEnum){
+    this.diseaseId=diseaseId;
+    this.langCode=langCodeEnum;
+  }
+
 }

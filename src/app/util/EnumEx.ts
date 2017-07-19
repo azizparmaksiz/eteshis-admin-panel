@@ -11,10 +11,21 @@ export class EnumEx {
     return EnumEx.getObjValues(e).filter(v => typeof v === 'number') as T[];
   }
 
-  private static getObjValues(e: any): (number | string)[] {
+   static getObjValues(e: any): (number | string)[] {
     return Object.keys(e).map(k => e[k]);
   }
 
 
+  static getDropDownArrayFromEnum(e: any): Array<any> {
+    const prodTypes: any[] = [];
 
+    const prodTypeEnumList = EnumEx.getNamesAndValues(e);
+
+    prodTypeEnumList.forEach(pair => {
+      const prodType = {'label': pair.name, 'value': pair.value.toString()};
+      prodTypes.push(prodType);
+    });
+
+    return prodTypes;
+  }
 }

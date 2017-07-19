@@ -21,7 +21,7 @@ import {
   CodeHighlighterModule, DataTableModule,
   DialogModule,
   DropdownModule,
-  EditorModule,
+  EditorModule, GrowlModule,
   MultiSelectModule, SharedModule,
   SpinnerModule,
   TabViewModule
@@ -32,6 +32,10 @@ import {MedicaneComponent} from './medicane/medicane.component';
 import {CategoryService} from './service/category.service';
 import {AgeRangeService} from './service/age-range.service';
 import {MedicalTestService} from './service/medicalTest.service';
+import {SharedService} from "./service/shared.service";
+import {DiseaseTransCreateComponent} from "./disease/disease-trans-create/disease-trans-create.component";
+import {DiseaseTransDetailComponent} from "./disease/disease-trans-detail/disease-trans-detail.component";
+import {SymptomService} from "./service/symptom.service";
 
 const routes: Routes = [
 
@@ -40,7 +44,7 @@ const routes: Routes = [
     children: [
       {path: 'diseases', component: DiseaseComponent}
     ],
-    //canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
 ];
 export function createTranslateLoader(http: Http) {
@@ -53,10 +57,12 @@ export function createTranslateLoader(http: Http) {
     SymptomComponent,
     DiseaseCreateComponent,
     HomeComponent,
-    MedicaneComponent
+    MedicaneComponent,
+    DiseaseTransCreateComponent,
+    DiseaseTransDetailComponent
   ],
   imports: [
-    BrowserModule, FormsModule, CommonModule, ButtonModule, EditorModule, AccordionModule,
+    BrowserModule, FormsModule, CommonModule, ButtonModule, EditorModule, AccordionModule,  GrowlModule,
     DialogModule, TabViewModule, CodeHighlighterModule, BrowserAnimationsModule, DropdownModule,
     MultiSelectModule, DataTableModule, SharedModule,
     RouterModule.forRoot(routes), HttpModule, LoginModule, CheckboxModule, SpinnerModule,
@@ -66,8 +72,9 @@ export function createTranslateLoader(http: Http) {
       deps: [Http],
     }),
   ],
-  providers: [DiseaseService, AuthGuard, CategoryService, AgeRangeService, MedicalTestService,
-    {provide: MissingTranslationHandler, useClass: AppMissingTranslationHandler}],
+  providers: [DiseaseService, AuthGuard,
+    CategoryService, AgeRangeService, MedicalTestService,SymptomService,
+    {provide: MissingTranslationHandler, useClass: AppMissingTranslationHandler},SharedService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

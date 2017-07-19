@@ -1,16 +1,29 @@
-<p-dialog modal="modal" [responsive]="false" [(visible)]="displayDialog" [contentStyle]="{'overflow':'visible'}">
-  <p-header><h3 class="text-white">{{'t_createDisease' | translate}}</h3></p-header>
+<p-dialog *ngIf="displayDialog" modal="modal" [responsive]="false" [(visible)]="displayDialog" [contentStyle]="{'overflow':'visible'}">
+  <p-header>
+    <div class="row">
+      <div class="col-md-4">
+
+        <p-dropdown disabled [options]="langCodes" [(ngModel)]="diseaseTransCreate.langCode" autoWidth="false" [style]="{'width':'40%'}">
+          <ng-template let-lang pTemplate="item">
+            <img src="assets/img/flags/{{lang.label}}.png" width="24">
+            <span style="font-size:14px;float:right;margin-top:7px">{{lang.label}}</span>
+          </ng-template>
+        </p-dropdown>
+      </div>
+      <div class="col-md-4"><h3 class="text-white">{{'t_createDisease' | translate}}</h3></div>
+    </div>
+  </p-header>
 
   <div>
 
     <div class="row">
       <div class="col-md-6">
-        <span>{{'l_disease.id' | translate}}</span>
-        <input type="text" class="form-control" [(ngModel)]="disease.id">
+        <span>{{'l_disease.diseaseId' | translate}}</span>
+        <input disabled type="text" class="form-control" [(ngModel)]="diseaseTransCreate.diseaseId">
       </div>
       <div class="col-md-6">
         <span>{{'l_disease.name' | translate}}</span>
-        <input type="text" class="form-control" [(ngModel)]="disease.name">
+        <input type="text" class="form-control" [(ngModel)]="diseaseTransCreate.diseaseName">
       </div>
     </div>
     <br>
@@ -20,71 +33,61 @@
 
           <p-accordionTab>
             <p-header> {{'l_disease.description' | translate}}</p-header>
-            <p-editor [(ngModel)]="disease.description"></p-editor>
+            <p-editor [(ngModel)]="diseaseTransCreate.description"></p-editor>
           </p-accordionTab>
 
           <p-accordionTab>
             <p-header> {{'l_disease.treatment' | translate}}</p-header>
-            <p-editor [(ngModel)]="disease.treatment "></p-editor>
+            <p-editor [(ngModel)]="diseaseTransCreate.treatment "></p-editor>
           </p-accordionTab>
 
           <p-accordionTab>
             <p-header> {{'l_disease.riskFactor' | translate}}</p-header>
-            <p-editor [(ngModel)]="disease.riskFactor "></p-editor>
+            <p-editor [(ngModel)]="diseaseTransCreate.riskFactor "></p-editor>
           </p-accordionTab>
 
           <p-accordionTab>
             <p-header> {{'l_disease.selfCare' | translate}}</p-header>
-            <p-editor [(ngModel)]="disease.selfCare "></p-editor>
+            <p-editor [(ngModel)]="diseaseTransCreate.selfCare "></p-editor>
           </p-accordionTab>
 
           <p-accordionTab>
             <p-header> {{'l_disease.diagnosedBy' | translate}}</p-header>
 
-            <p-editor [(ngModel)]="disease.diagnosedBy "></p-editor>
+            <p-editor [(ngModel)]="diseaseTransCreate.diagnosedBy "></p-editor>
           </p-accordionTab>
 
           <p-accordionTab>
             <p-header> {{'l_disease.whatToExpect' | translate}}</p-header>
-            <p-editor [(ngModel)]="disease.whatToExpect "></p-editor>
+            <p-editor [(ngModel)]="diseaseTransCreate.whatToExpect "></p-editor>
           </p-accordionTab>
 
           <p-accordionTab>
             <p-header> {{'l_disease.howCommon' | translate}}</p-header>
-            <p-editor [(ngModel)]="disease.howCommon "></p-editor>
-          </p-accordionTab>
-
-          <p-accordionTab>
-            <p-header> {{'l_disease.ref' | translate}}</p-header>
-            <p-editor [(ngModel)]="disease.ref "></p-editor>
+            <p-editor [(ngModel)]="diseaseTransCreate.howCommon "></p-editor>
           </p-accordionTab>
         </p-accordion>
 
       </div>
     </div>
     <br>
-
-      <div class="col-md-6">
-        <h6>{{'l_disease.langCode' | translate}}</h6>
-        <p-dropdown [options]="langCodes" [(ngModel)]="disease.langCode" autoWidth="false" [style]="{'width':'80%'}"
-                    placeholder="Select a Language">
-          <ng-template let-lang pTemplate="item">
-            <div class="ui-helper-clearfix">
-              <img src="assets/img/flags/{{lang.label}}.png" style="display:inline-block;margin:5px 0 0 5px" width="24">
-              <span style="font-size:15px;float:right;margin:10px 10px 0 0">{{lang.label}}</span>
-            </div>
-          </ng-template>
-          </p-dropdown>
+    <div class="row">
+      <div class="col-md-12">
+        <h6>{{'l_disease.symptomList' | translate}}</h6>
+        <p-multiSelect [defaultLabel]="'choose symptom'" [options]="symptomList"
+                       [(ngModel)]="diseaseTransCreate.symptomIdList" [maxSelectedLabels]="0" autoWidth="false"
+                       [style]="{'width':'100%'}">
+        </p-multiSelect>
       </div>
     </div>
     <br>
-
   </div>
+  <br>
   <p-footer>
     <button pButton type="button" class="ui-button-secondary" (click)="close()" label="Close"></button>
-    <button *ngIf="diseaseDetailMode" pButton type="button" class="ui-button-success" (click)="save()"
+    <button *ngIf="createMode" pButton type="button" class="ui-button-success" (click)="save()"
             label="Save"></button>
-    <button *ngIf="!diseaseDetailMode" pButton type="button" class="ui-button-success" (click)="update()"
+    <button *ngIf="!createMode" pButton type="button" class="ui-button-success" (click)="update()"
             label="Update"></button>
   </p-footer>
 </p-dialog>

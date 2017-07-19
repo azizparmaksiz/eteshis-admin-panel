@@ -1,6 +1,6 @@
 import {LangCodeEnum} from './language-code.enum';
 /**
- * Created by seva on 7/14/17.
+ *  TODO: bu sinif tamamlanmadi halen
  */
 export class Category {
   id: number;

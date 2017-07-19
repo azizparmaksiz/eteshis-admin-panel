@@ -4,14 +4,13 @@ import {LangCodeEnum} from './language-code.enum';
  * Created by seva on 7/9/17.
  */
 
-export class DiseaseCreate {
+export class DiseaseCreateDto {
   probability: number;
   code: string;
   url: string;
   referances: string;
   diseaseName: string;
   description: string;
-  skop: string;
   medicoName: string;
   treatment: string;
   riskFactor: string;

@@ -3,10 +3,8 @@ import {CategoryListDto} from './category-list';
 import {AgeRangeDto} from './age-range';
 import {MedicalTestDto} from './medical-test';
 import {SymptomDiseaseDto} from './symptom-disease';
-/**
- * Created by seva on 7/16/17.
- */
-export class DiseaseDetail {
+
+export class DiseaseTransDetail {
 
   diseaseId: number;
   diseaseName: string;

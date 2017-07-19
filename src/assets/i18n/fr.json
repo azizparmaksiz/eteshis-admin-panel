@@ -1,5 +1,6 @@
 {
   "l_disease": {
+    "diseaseId": "Disease ID",
     "categories": "Categories",
     "ageRanges": "Age Ranges",
     "name": " Disease Name",
@@ -20,7 +21,12 @@
     "langCode": "Language Code",
     "usedRisk": "Used Risk",
     "approved": "Approved",
-    "enabled": "Enabled"
+    "enabled": "Enabled",
+    "symptomList": "Symptoms"
+
   },
-  "t_createDisease": "Create Disease"
+  "t_createDisease": "Créer une maladie",
+  "t_editDisease": "Modifier la maladie",
+  "t_diseaseDetail": "Détail de la maladie"
+
 }

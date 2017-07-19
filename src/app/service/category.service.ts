@@ -7,8 +7,9 @@ import {Headers, Http} from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
-import {Category} from '../dto/category';
+
 import {SERVER_URL} from '../config/app-constants';
+import {CategoryListDto} from "../dto/category-list";
 @Injectable()
 export class CategoryService {
 
@@ -22,7 +23,7 @@ export class CategoryService {
     this.headers = new Headers();
     this.headers.append('Authorization', `Basic  ${basicAuthHeader}`);
     this.headers.append('Accept', `application/json; charset=utf-8`);
-    this.headers.append('Content-Type', `application/x-www-form-urlencoded`);
+    this.headers.append('Content-Type', `application/json`);
   }
 
   private handleError(error: any): Promise<any> {
@@ -30,11 +31,15 @@ export class CategoryService {
     return Promise.reject(error.message || error);
   }
 
+  /**
+   * get categories in selected language
+   * */
+  getAllCategories(langCodeId:number): Promise<CategoryListDto[]> {
+    const url = `${SERVER_URL + '/category/lang'}/${langCodeId}`;
 
-  getAllCategories(): Promise<Category[]> {
-    return this.http.get(SERVER_URL + '/category/filter', {headers: this.headers})
+    return this.http.get(url, {headers: this.headers})
       .toPromise()
-      .then(response => response.json() as Category[])
+      .then(response => response.json() )
       .catch(this.handleError);
   }
 

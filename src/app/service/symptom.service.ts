@@ -8,13 +8,12 @@ import {Headers, Http} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import {SERVER_URL} from '../config/app-constants';
-
 @Injectable()
-export class MedicalTestService {
+export class SymptomService {
 
-  private medicalTestUrl: string;  // URL to web
+  private symptomUrl: string;  // URL to web
   constructor(private http: Http) {
-    this.medicalTestUrl = SERVER_URL + '/medicalTests';
+    this.symptomUrl = SERVER_URL + '/symptoms';
   }
 
 
@@ -23,11 +22,9 @@ export class MedicalTestService {
     return Promise.reject(error.message || error);
   }
 
-  /**
-   * get Medical Tests in selected language
-   * */
-  getAllMedicalTests(langCodeId: number): Promise<any[]> {
-    return this.http.get(this.medicalTestUrl)
+
+  getAllsymptoms(): Promise<any[]> {
+    return this.http.get(this.symptomUrl)
       .toPromise()
       .then(response => response.json())
       .catch(this.handleError);
