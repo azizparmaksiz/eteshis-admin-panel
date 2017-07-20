@@ -55,7 +55,7 @@ export class DiseaseTransCreateComponent {
 
     return items;
   }
-  oldLang:LangCodeEnum;
+  private oldLangCode: string;
   /**
    * initialize disease trans in create mode
    */
@@ -64,7 +64,7 @@ export class DiseaseTransCreateComponent {
     this.diseaseTransCreate = new DiseaseTransCreateDto();
     this.displayDialog = true;
     this.diseaseTransCreate.langCode = langId;
-    this.oldLang=LangCodeEnum[this.translate.currentLang.toUpperCase()];
+    this.oldLangCode=this.translate.currentLang;
     this.translate.use(LangCodeEnum[langId].toLowerCase());
   }
 
@@ -95,7 +95,7 @@ export class DiseaseTransCreateComponent {
 
   close(): void {
     this.displayDialog = false;
-    this.translate.use(LangCodeEnum[this.oldLang].toLowerCase());
+    this.translate.use(this.oldLangCode);
   }
 
 }

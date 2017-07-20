@@ -11,10 +11,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" routerLink="/syptom" routerLinkActive="active">Symptom</a>
+          <a class="nav-link" routerLink="/home/symptom" routerLinkActive="active">Symptom</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/home/diseases" routerLinkActive="active">Disease</a>
+          <a class="nav-link" routerLink="/home/disease" routerLinkActive="active">Disease</a>
         </li>
         <li class="nav-item my-2 my-lg-0">
           <a class="nav-link" href="#" (click)="logOut()">LogOut</a>
@@ -41,10 +41,13 @@
 
     <div class="col-md-2">
       <div class="row">
-        <a class="col-md-10 ui-button-info" routerLink="/home/diseases" routerLinkActive="active">Disease</a>
+        <a class="col-md-10 ui-button-info" routerLink="/home/disease" routerLinkActive="active">Disease</a>
       </div>
       <div class=" row">
-        <a class="col-md-10 ui-button-info" routerLink="/home/syptom" routerLinkActive="active">Syptom</a>
+        <a class="col-md-10 ui-button-info" routerLink="/home/symptom" routerLinkActive="active">Symptom</a>
+      </div>
+      <div class=" row">
+        <a class="col-md-10 ui-button-info" routerLink="/home/category" routerLinkActive="active">Category</a>
       </div>
     </div>
 

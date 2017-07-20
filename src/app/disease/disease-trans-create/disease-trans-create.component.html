@@ -1,9 +1,11 @@
-<p-dialog *ngIf="displayDialog" modal="modal" [responsive]="false" [(visible)]="displayDialog" [contentStyle]="{'overflow':'visible'}">
+<p-dialog *ngIf="displayDialog" modal="modal" [responsive]="false" [(visible)]="displayDialog"
+          [contentStyle]="{'overflow':'visible'}" (onHide)="close()">
   <p-header>
     <div class="row">
       <div class="col-md-4">
 
-        <p-dropdown disabled [options]="langCodes" [(ngModel)]="diseaseTransCreate.langCode" autoWidth="false" [style]="{'width':'40%'}">
+        <p-dropdown disabled [options]="langCodes" [(ngModel)]="diseaseTransCreate.langCode" autoWidth="false"
+                    [style]="{'width':'40%'}">
           <ng-template let-lang pTemplate="item">
             <img src="assets/img/flags/{{lang.label}}.png" width="24">
             <span style="font-size:14px;float:right;margin-top:7px">{{lang.label}}</span>

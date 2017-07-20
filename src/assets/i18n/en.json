@@ -25,8 +25,19 @@
     "symptomList": "Symptoms"
 
   },
+  "l_category": {
+    "id": "Category ID",
+    "name": "Category Name",
+    "description": "Description",
+    "viewIndex": "View Index",
+    "langCode": "Language Code",
+    "enabled": "Enabled"
+  },
   "t_createDisease": "Create Disease",
   "t_editDisease": "Edit Disease",
-  "t_diseaseDetail": "Disease Detail"
+  "t_diseaseDetail": "Disease Detail",
+  "t_createCategory": "Create Category",
+  "t_editCategory": "Edit Category",
+  "t_categoryDetail": "Category Detail"
 
 }

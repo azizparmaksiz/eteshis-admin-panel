@@ -14,20 +14,8 @@ import {AppMissingTranslationHandler} from './app-missing-translation-handler';
 import {HomeComponent} from './home/home.component';
 import {LoginModule} from './login/login.module';
 import {AuthGuard} from './auth/auth-guard.service';
-import {
-  AccordionModule,
-  ButtonModule,
-  CheckboxModule,
-  CodeHighlighterModule, DataTableModule,
-  DialogModule,
-  DropdownModule,
-  EditorModule, GrowlModule,
-  MultiSelectModule, SharedModule,
-  SpinnerModule,
-  TabViewModule
-} from 'primeng/primeng';
+
 import {CommonModule} from '@angular/common';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MedicaneComponent} from './medicane/medicane.component';
 import {CategoryService} from './service/category.service';
 import {AgeRangeService} from './service/age-range.service';
@@ -36,36 +24,46 @@ import {SharedService} from "./service/shared.service";
 import {DiseaseTransCreateComponent} from "./disease/disease-trans-create/disease-trans-create.component";
 import {DiseaseTransDetailComponent} from "./disease/disease-trans-detail/disease-trans-detail.component";
 import {SymptomService} from "./service/symptom.service";
+import {PrimeNgRootModule} from "./prime-ng-root.module";
+import {CategoryComponent} from "./category/category.component";
+import {CategoryCreateComponent} from "./category/category-create/category-create.component";
+import {CategoryTransCreateComponent} from "./category/category-trans-create/category-trans-create.component";
 
 const routes: Routes = [
 
   {
     path: 'home', component: HomeComponent,
     children: [
-      {path: 'diseases', component: DiseaseComponent}
+      {path: 'disease', component: DiseaseComponent},
+      {path: 'symptom', component: SymptomComponent},
+      {path: 'category', component: CategoryComponent}
     ],
     canActivate: [AuthGuard]
   },
 ];
+
 export function createTranslateLoader(http: Http) {
   return new TranslateStaticLoader(http, './assets/i18n', '.json');
 }
+
 @NgModule({
   declarations: [
     AppComponent,
-    DiseaseComponent,
-    SymptomComponent,
-    DiseaseCreateComponent,
     HomeComponent,
+    SymptomComponent,
     MedicaneComponent,
+    DiseaseComponent,
+    DiseaseCreateComponent,
     DiseaseTransCreateComponent,
-    DiseaseTransDetailComponent
+    DiseaseTransDetailComponent,
+    CategoryComponent,
+    CategoryCreateComponent,
+    CategoryTransCreateComponent,
   ],
   imports: [
-    BrowserModule, FormsModule, CommonModule, ButtonModule, EditorModule, AccordionModule,  GrowlModule,
-    DialogModule, TabViewModule, CodeHighlighterModule, BrowserAnimationsModule, DropdownModule,
-    MultiSelectModule, DataTableModule, SharedModule,
-    RouterModule.forRoot(routes), HttpModule, LoginModule, CheckboxModule, SpinnerModule,
+    BrowserModule, FormsModule, CommonModule,
+    PrimeNgRootModule,
+    RouterModule.forRoot(routes), HttpModule, LoginModule,
     TranslateModule.forRoot({
       provide: TranslateLoader,
       useFactory: (createTranslateLoader),
@@ -73,8 +71,8 @@ export function createTranslateLoader(http: Http) {
     }),
   ],
   providers: [DiseaseService, AuthGuard,
-    CategoryService, AgeRangeService, MedicalTestService,SymptomService,
-    {provide: MissingTranslationHandler, useClass: AppMissingTranslationHandler},SharedService],
+    CategoryService, AgeRangeService, MedicalTestService, SymptomService,
+    {provide: MissingTranslationHandler, useClass: AppMissingTranslationHandler}, SharedService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

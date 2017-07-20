@@ -1,10 +1,10 @@
-import { EteshisFrontendPage } from './app.po';
+import { EteshisAdminPanelPage } from './app.po';
 
-describe('eteshis-frontend App', () => {
-  let page: EteshisFrontendPage;
+describe('eteshis-admin-panel App', () => {
+  let page: EteshisAdminPanelPage;
 
   beforeEach(() => {
-    page = new EteshisFrontendPage();
+    page = new EteshisAdminPanelPage();
   });
 
   it('should display welcome message', () => {

@@ -1,5 +1,5 @@
 <p-dialog *ngIf="displayDialog" modal="modal" [responsive]="false" [(visible)]="displayDialog"
-          [contentStyle]="{'overflow':'visible'}">
+          [contentStyle]="{'overflow':'visible'}" (onHide)="close()">
   <p-header>
     <div class="row">
       <div class="col-md-4">

@@ -1,6 +1,6 @@
 import { browser, by, element } from 'protractor';
 
-export class EteshisFrontendPage {
+export class EteshisAdminPanelPage {
   navigateTo() {
     return browser.get('/');
   }

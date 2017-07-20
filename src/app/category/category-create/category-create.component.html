@@ -1,0 +1,67 @@
+<p-dialog *ngIf="displayDialog" modal="modal" [responsive]="false" [(visible)]="displayDialog"
+          [contentStyle]="{'overflow':'visible'}" (onHide)="close()">
+  <p-header>
+    <div class="row">
+      <div class="col-md-4">
+
+        <p-dropdown *ngIf="createMode" [options]="langCodes" [(ngModel)]="category.langCode" autoWidth="false"
+                    [style]="{'width':'40%'}" (onChange)="changeContent()">
+          <ng-template let-lang pTemplate="item">
+            <img src="assets/img/flags/{{lang.label}}.png" width="24">
+            <span style="font-size:14px;float:right;margin-top:7px">{{lang.label}}</span>
+          </ng-template>
+        </p-dropdown>
+      </div>
+      <div *ngIf="createMode" class="col-md-4"><h3 class="text-white">{{'t_createCategory' | translate}}</h3></div>
+      <div *ngIf="!createMode" class="col-md-4"><h3 class="text-white">{{'t_editCategory' | translate}}</h3></div>
+
+    </div>
+
+  </p-header>
+
+  <div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <span>{{'l_category.name' | translate}}</span>
+        <input type="text" class="form-control" [(ngModel)]="category.categoryName" required>
+      </div>
+    </div>
+    <br>
+
+    <div class="row">
+      <div class="col-md-12">
+        <p-accordion>
+          <p-accordionTab>
+            <p-header> {{'l_category.description' | translate}}</p-header>
+            <p-editor [(ngModel)]="category.description "></p-editor>
+          </p-accordionTab>
+        </p-accordion>
+      </div>
+    </div>
+    <br>
+
+    <div class="row">
+      <div class="col-md-12">
+        <span>{{'l_category.viewIndex' | translate}}</span>
+        <input type="number" class="form-control" [(ngModel)]="category.viewIndex" required>
+      </div>
+    </div>
+    <br>
+
+    <div class="row">
+      <div class="col-md-12">
+        <span>{{'l_category.enabled' | translate}}</span>
+        <p-checkbox [(ngModel)]="category.enabled" binary="true"></p-checkbox>
+      </div>
+    </div>
+    <br>
+  </div>
+  <p-footer>
+    <button pButton type="button" class="ui-button-secondary" (click)="close()" label="Close"></button>
+    <button *ngIf="createMode" pButton type="button" class="ui-button-success" (click)="save()" label="Save"></button>
+    <button *ngIf="!createMode" pButton type="button" class="ui-button-success" (click)="update()"
+            label="Update"></button>
+
+  </p-footer>
+</p-dialog>

@@ -10,6 +10,7 @@ import 'rxjs/add/operator/map';
 
 import {SERVER_URL} from '../config/app-constants';
 import {CategoryListDto} from "../dto/category-list";
+import {CategoryCreateDto} from "../dto/category-create";
 @Injectable()
 export class CategoryService {
 
@@ -44,4 +45,21 @@ export class CategoryService {
   }
 
 
+  createCategory(task: CategoryCreateDto): Promise<any> {
+    console.log(JSON.stringify(task));
+    return this.http
+      .post(SERVER_URL + '/category/create', JSON.stringify(task), {headers: this.headers})
+      .toPromise()
+      .then(() => task)
+      .catch(this.handleError);
+  }
+
+  createTransCategory(task: CategoryCreateDto): Promise<any> {
+    console.log(JSON.stringify(task));
+    return this.http
+      .post(SERVER_URL + '/category/transcreate', JSON.stringify(task), {headers: this.headers})
+      .toPromise()
+      .then(() => task)
+      .catch(this.handleError);
+  }
 }

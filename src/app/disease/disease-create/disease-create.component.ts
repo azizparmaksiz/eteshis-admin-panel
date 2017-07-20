@@ -116,7 +116,7 @@ private initializeCommon(){
 
   oldLang:LangCodeEnum;
   changeContent():void{
-    this.oldLang=this.disease.langCode;
+    this.oldLang=LangCodeEnum[this.translate.currentLang.toUpperCase()];
     this.translate.use(LangCodeEnum[this.disease.langCode].toLowerCase());
     this.categories = this.getCategories(this.disease.langCode);
     this.medicalTests = this.getMedicalTests(this.disease.langCode);
